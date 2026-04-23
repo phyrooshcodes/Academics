@@ -997,3 +997,893 @@ render();
 </script>
 </body>
 </html>
+    font-size: clamp(22px, 4vw, 30px);
+    font-weight: 800;
+    line-height: 1.15;
+    color: #F1F5F9;
+    margin-bottom: 6px;
+  }
+  .header p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── TABS ────────────────────────────────────────────── */
+  .tabs {
+    display: flex;
+    background: var(--dark2);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid #334155;
+  }
+  .tab-btn {
+    flex: 1;
+    padding: 13px 6px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--muted);
+    border-bottom: 2px solid transparent;
+    transition: color .15s, border-color .15s;
+    white-space: nowrap;
+  }
+  .tab-btn.active {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+    font-weight: 700;
+  }
+  .tab-btn:hover:not(.active) { color: #CBD5E1; }
+
+  /* ── CONTENT ─────────────────────────────────────────── */
+  .content {
+    padding: 20px 18px 48px;
+  }
+
+  /* ── SECTION LABEL ───────────────────────────────────── */
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #64748B;
+    margin-bottom: 12px;
+    margin-top: 6px;
+  }
+
+  /* ── CARDS ───────────────────────────────────────────── */
+  .card {
+    background: var(--surface);
+    border-radius: var(--radius-md);
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+  }
+  .card-dark {
+    background: var(--dark);
+    color: #F1F5F9;
+    border-radius: var(--radius-lg);
+    padding: 16px 18px;
+    margin-bottom: 18px;
+  }
+  .card-dark .kicker {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: var(--gold);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+  .card-dark h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+  .card-dark p  { font-size: 12px; color: var(--muted); }
+
+  /* ── PROGRESS BAR ────────────────────────────────────── */
+  .progress-row { margin-bottom: 12px; }
+  .progress-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-bottom: 5px;
+    color: #374151;
+  }
+  .progress-meta strong { font-family: var(--font-mono); font-size: 12px; color: var(--dark); }
+  .progress-track {
+    background: #E2E8F0;
+    border-radius: 4px;
+    height: 6px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width .5s ease;
+  }
+
+  /* ── PRIORITY SUBJECT CARDS ──────────────────────────── */
+  .subject-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .subject-row .left { display: flex; align-items: center; gap: 10px; }
+  .subject-row .icon { font-size: 20px; }
+  .subject-row .name { font-weight: 700; font-size: 14px; color: var(--dark); }
+  .subject-row .meta { font-size: 11px; color: var(--muted); margin-top: 4px; }
+  .pill {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  /* ── INFO BOXES ──────────────────────────────────────── */
+  .info-box {
+    border-radius: var(--radius-md);
+    padding: 14px 16px;
+    margin-top: 14px;
+  }
+  .info-box h4 { font-size: 13px; font-weight: 700; margin-bottom: 8px; }
+  .info-box p, .info-box li { font-size: 12px; line-height: 1.7; }
+  .info-box ol { padding-left: 18px; }
+  .info-box ol li { margin-bottom: 3px; }
+
+  /* ── DAILY ROUTINE ───────────────────────────────────── */
+  .routine-item {
+    border-radius: var(--radius-sm);
+    padding: 11px 13px;
+    margin-bottom: 6px;
+    border-left: 3px solid #CBD5E1;
+    background: var(--surface);
+    display: flex;
+    gap: 11px;
+    align-items: center;
+    box-shadow: var(--shadow-sm);
+    transition: transform .1s;
+  }
+  .routine-item:hover { transform: translateX(2px); }
+  .routine-item.is-break { background: #F8FAFC; opacity: .78; box-shadow: none; }
+  .routine-item .ri-icon { font-size: 16px; flex-shrink: 0; }
+  .routine-item .ri-time {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .routine-item .ri-task { font-size: 12px; color: #1E293B; font-weight: 500; }
+  .routine-item.is-break .ri-task { color: #64748B; font-weight: 400; }
+
+  /* ── WEEKLY THEMES ───────────────────────────────────── */
+  .week-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .day-badge {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    color: #fff;
+    min-width: 38px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .week-row span { font-size: 13px; color: #374151; }
+
+  /* ── SUBJECT PILLS (Chapters tab) ────────────────────── */
+  .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+  .subj-pill {
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1.5px solid transparent;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-body);
+    transition: background .15s, color .15s;
+  }
+
+  /* ── SUBJECT HEADER ──────────────────────────────────── */
+  .subj-header {
+    border-radius: var(--radius-lg);
+    padding: 16px 18px;
+    margin-bottom: 14px;
+    border: 1px solid var(--border);
+  }
+  .subj-header h2 { font-size: 20px; font-weight: 700; margin-bottom: 5px; }
+  .subj-header .sh-meta { font-size: 12px; color: #374151; margin-bottom: 8px; }
+  .subj-header .sh-tip {
+    font-size: 12px;
+    color: #374151;
+    font-style: italic;
+    line-height: 1.7;
+    margin-top: 10px;
+  }
+
+  .practicals-banner {
+    background: var(--dark);
+    color: var(--gold);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    margin-bottom: 14px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  /* ── CHAPTER CARDS ───────────────────────────────────── */
+  .chapter-card {
+    background: var(--surface);
+    border-radius: var(--radius-md);
+    padding: 13px 14px;
+    margin-bottom: 9px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+  }
+  .chapter-card .cc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 7px;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .cc-wk {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 20px;
+    color: #fff;
+  }
+  .cc-cls {
+    font-size: 10px;
+    background: #F1F5F9;
+    color: #64748B;
+    padding: 2px 9px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-family: var(--font-mono);
+  }
+  .cc-topic {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 5px;
+    line-height: 1.4;
+  }
+  .cc-task { font-size: 11px; color: #475569; line-height: 1.55; }
+
+  /* ── TIPS TAB ────────────────────────────────────────── */
+  .accordion {
+    background: var(--surface);
+    border-radius: var(--radius-md);
+    margin-bottom: 9px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .accordion-btn {
+    width: 100%;
+    padding: 13px 15px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-body);
+    text-align: left;
+  }
+  .accordion-btn .acc-left { display: flex; gap: 11px; align-items: center; }
+  .accordion-btn .acc-icon { font-size: 20px; }
+  .accordion-btn .acc-name { font-size: 13px; font-weight: 700; }
+  .accordion-btn .acc-teacher { font-size: 10px; color: var(--muted); margin-top: 1px; }
+  .accordion-btn .acc-arrow { color: var(--muted); font-size: 14px; transition: transform .2s; }
+  .accordion-btn.open .acc-arrow { transform: rotate(180deg); }
+  .accordion-body {
+    display: none;
+    padding: 0 15px 15px;
+    border-top: 1px solid var(--border);
+  }
+  .accordion-body.open { display: block; }
+  .accordion-body .tip-text {
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    font-size: 12px;
+    color: #374151;
+    line-height: 1.75;
+    margin-top: 12px;
+  }
+
+  .general-tip {
+    display: flex;
+    gap: 13px;
+    background: var(--surface);
+    padding: 14px 15px;
+    border-radius: var(--radius-md);
+    margin-bottom: 8px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+  }
+  .general-tip .gt-icon { font-size: 22px; flex-shrink: 0; }
+  .general-tip .gt-title { font-size: 12px; font-weight: 700; color: var(--dark); margin-bottom: 3px; }
+  .general-tip .gt-text  { font-size: 12px; color: #475569; line-height: 1.65; }
+
+  /* Assessment Summary */
+  .assessment-box {
+    background: var(--dark);
+    border-radius: var(--radius-lg);
+    padding: 18px;
+    margin-top: 18px;
+  }
+  .assessment-box h4 {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--gold);
+    margin-bottom: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .assess-row { margin-bottom: 10px; }
+  .assess-row .ar-subj {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--gold);
+    margin-bottom: 2px;
+  }
+  .assess-row .ar-marks { font-size: 11px; color: var(--muted); line-height: 1.5; }
+
+  /* ── RESPONSIVE ──────────────────────────────────────── */
+  @media (min-width: 600px) {
+    .content { padding: 24px 26px 60px; }
+    .header  { padding: 34px 30px 26px; }
+    .tab-btn { font-size: 14px; padding: 14px 10px; }
+    .routine-item .ri-task { font-size: 13px; }
+    .cc-topic { font-size: 14px; }
+    .chapter-card { padding: 15px 16px; }
+  }
+
+  @media (min-width: 860px) {
+    .app-wrap {
+      box-shadow: 0 0 0 1px #E2E8F0, 0 8px 40px rgba(0,0,0,.08);
+      min-height: 100vh;
+    }
+    body { background: #EDECE8; padding: 32px 16px; }
+    .tabs { border-radius: 0; }
+    .header h1 { font-size: 32px; }
+    .content { padding: 28px 32px 70px; }
+
+    /* Two-column chapter cards on large screens */
+    .chapter-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .chapter-grid .chapter-card { margin-bottom: 0; }
+
+    /* Two-column overview grid */
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .overview-grid .card { margin-bottom: 0; }
+
+    /* Side-by-side daily + weekly on desktop */
+    .daily-layout {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 22px;
+      align-items: start;
+    }
+  }
+
+  /* ── UTILITIES ───────────────────────────────────────── */
+  .mt-16 { margin-top: 16px; }
+  .mt-20 { margin-top: 20px; }
+  .mb-0  { margin-bottom: 0; }
+
+  /* Smooth fade on tab switch */
+  .tab-panel { animation: fadeIn .2s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* Hover lift on cards */
+  .chapter-card:hover, .card:hover { box-shadow: var(--shadow-md); }
+</style>
+</head>
+<body>
+<div class="app-wrap">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-kicker">CBSE Board 2025–26</div>
+    <h1>Complete Study Planner</h1>
+    <p>PCM + English → Sept 22 &nbsp;·&nbsp; Bio + Psych → Feb 2027</p>
+  </header>
+
+  <!-- TABS -->
+  <nav class="tabs" id="nav-tabs">
+    <button class="tab-btn active" data-tab="overview">Overview</button>
+    <button class="tab-btn"        data-tab="daily">Daily</button>
+    <button class="tab-btn"        data-tab="chapters">Chapters</button>
+    <button class="tab-btn"        data-tab="tips">Tips</button>
+  </nav>
+
+  <!-- CONTENT -->
+  <main class="content" id="main-content"></main>
+
+</div>
+
+<script>
+/* ─────────────────── DATA ─────────────────────────────── */
+const DAILY = [
+  { time:"6:00–6:45",  task:"Mathematics — New Concept / Chapter",            color:"#2563EB", icon:"📐" },
+  { time:"6:45–7:30",  task:"Physics — New Concept",                          color:"#7C3AED", icon:"⚡" },
+  { time:"7:30–8:15",  task:"Chemistry — New Concept",                        color:"#059669", icon:"🧪" },
+  { time:"8:15–9:00",  task:"English — Literature / Grammar",                  color:"#D97706", icon:"📚" },
+  { time:"9:00–10:00", task:"Break + Breakfast",                              color:"#94A3B8", icon:"☕",  isBreak:true },
+  { time:"10:00–11:30",task:"Mathematics — NCERT Exercises + Exemplar",       color:"#2563EB", icon:"📐" },
+  { time:"11:30–12:30",task:"Physics — Numericals Practice",                  color:"#7C3AED", icon:"⚡" },
+  { time:"12:30–2:00", task:"Lunch + Rest",                                   color:"#94A3B8", icon:"🍽️", isBreak:true },
+  { time:"2:00–2:45",  task:"Chemistry — Problems + Organic Reactions",       color:"#059669", icon:"🧪" },
+  { time:"2:45–3:30",  task:"Bio (Mon/Wed/Fri)  ·  Psychology (Tue/Thu/Sat)", color:"#DC2626", icon:"🌿" },
+  { time:"3:30–4:30",  task:"Break + Physical Activity",                      color:"#94A3B8", icon:"🏃", isBreak:true },
+  { time:"4:30–5:15",  task:"English — Writing Practice / Unseen Passages",   color:"#D97706", icon:"📚" },
+  { time:"5:15–6:00",  task:"Daily Revision + Error Log Update",              color:"#475569", icon:"🔄" },
+];
+
+const WEEKLY = [
+  { day:"Mon", theme:"Maths heavy + Biology",          color:"#2563EB" },
+  { day:"Tue", theme:"Physics heavy + Psychology",     color:"#7C3AED" },
+  { day:"Wed", theme:"Chemistry heavy + Biology",      color:"#059669" },
+  { day:"Thu", theme:"Maths + English + Psychology",   color:"#D97706" },
+  { day:"Fri", theme:"Physics heavy + Biology",        color:"#7C3AED" },
+  { day:"Sat", theme:"Mock Test + Weekly Revision",    color:"#DC2626" },
+  { day:"Sun", theme:"REST — Mandatory! No studying",  color:"#64748B" },
+];
+
+const HOURS = [
+  { label:"Mathematics", h:14, color:"#2563EB" },
+  { label:"Physics",     h:12, color:"#7C3AED" },
+  { label:"Chemistry",   h:10, color:"#059669" },
+  { label:"English",     h:8,  color:"#D97706" },
+  { label:"Bio / Psych", h:6,  color:"#DC2626" },
+];
+
+const GENERAL_TIPS = [
+  { icon:"📓", title:"Error Log",          tip:"Every wrong answer — note the chapter, concept, and WHY you got it wrong. Revisit every Saturday. This is your most powerful tool." },
+  { icon:"⏱️", title:"Timed Practice",     tip:"Knowing the answer and finishing in time are different skills. Practice the last 2 weeks of every subject with a stopwatch." },
+  { icon:"😴", title:"Sleep 7–8 hrs",      tip:"Memory consolidates during sleep. Late-night cramming before tests is actively harmful. Protect your sleep schedule." },
+  { icon:"🔁", title:"Spaced Repetition",  tip:"Review a topic on Day 1, Day 3, Day 7, then Day 21. Brief 15-minute reviews are more powerful than re-reading." },
+  { icon:"📖", title:"NCERT First",        tip:"For PCM, NCERT examples and exercises are the Bible. No reference book until NCERT is complete." },
+  { icon:"📊", title:"Weekly Tracking",    tip:"If you're more than 1 chapter behind in any subject, that Saturday's extra time goes to catching up — no exceptions." },
+];
+
+const SUBJECTS = {
+  mathematics: {
+    label:"Mathematics", icon:"📐", color:"#2563EB", bg:"#EFF6FF", bd:"#BFDBFE",
+    teacher:"Mr. Sharma", deadline:"Sept 22, 2026", totalWeeks:22,
+    tip:"NCERT is everything. Do every example, every exercise, every miscellaneous. Then Exemplar. Maths is 100% practice — reading theory without solving is wasted time. Maintain a formula booklet you write yourself.",
+    practicals:"Mathematics Activities (10 from NCERT Lab Manual) — 10 marks",
+    schedule:[
+      { weeks:"1–2",   topic:"Sets · Relations & Functions · Trigonometric Functions",        cls:"XI",   task:"NCERT Ex 1.1–3.4 + Exemplar Ch 1–3. Solve all Misc. exercises." },
+      { weeks:"3–4",   topic:"Complex Numbers · Linear Inequalities · Permutations & Combinations", cls:"XI", task:"NCERT Ch 5–7. Derive ⁿPᵣ and ⁿCᵣ from scratch." },
+      { weeks:"5–6",   topic:"Binomial Theorem · Sequences & Series · Straight Lines",       cls:"XI",   task:"NCERT Ch 8–10. Memorise GP formulas. Practice all line equations." },
+      { weeks:"7–8",   topic:"Conic Sections · 3D Geometry (Intro) · Limits & Derivatives",  cls:"XI",   task:"NCERT Ch 11–13. Know all standard conics cold." },
+      { weeks:"9",     topic:"Statistics · Probability (XI)",                                 cls:"XI",   task:"NCERT Ch 14–15. Axiomatic probability + variance problems." },
+      { weeks:"10",    topic:"Relations & Functions (XII) · Inverse Trig Functions",          cls:"XII",  task:"NCERT XII Ch 1–2. Principal value branches — memorise." },
+      { weeks:"11–12", topic:"Matrices · Determinants",                                       cls:"XII",  task:"NCERT XII Ch 3–4 + all Misc. exercises. Row reduction + inverse by adjoint." },
+      { weeks:"13–14", topic:"Continuity & Differentiability · Applications of Derivatives", cls:"XII",  task:"NCERT XII Ch 5–6 + Exemplar. Chain rule + maxima/minima problems." },
+      { weeks:"15–16", topic:"Integrals · Application of Integrals",                         cls:"XII",  task:"All 9 standard integral forms. Definite integrals + area between curves." },
+      { weeks:"17",    topic:"Differential Equations",                                        cls:"XII",  task:"NCERT XII Ch 9. Variable separable + linear DE + homogeneous." },
+      { weeks:"18–19", topic:"Vectors · Three-Dimensional Geometry",                         cls:"XII",  task:"NCERT XII Ch 10–11. Dot product, cross product, skew lines, distance." },
+      { weeks:"20",    topic:"Linear Programming · Probability (XII)",                        cls:"XII",  task:"NCERT XII Ch 12–13. Bayes' theorem + graphical LP problems." },
+      { weeks:"21–22", topic:"🔁 Full Revision + 10 Mock Papers",                            cls:"Both", task:"10 timed full papers. Error log analysis. Weak chapter deep-dive." },
+    ]
+  },
+  physics: {
+    label:"Physics", icon:"⚡", color:"#7C3AED", bg:"#F5F3FF", bd:"#DDD6FE",
+    teacher:"Ms. Verma", deadline:"Sept 22, 2026", totalWeeks:22,
+    tip:"Never mug formulas — derive them at least once. Write: Given / Find / Formula / Solution for every numerical. Build a 'Concept Map' per unit. Physics practicals are 30 marks — don't ignore them.",
+    practicals:"8 Experiments + 6 Activities + Investigatory Project — 30 marks total",
+    schedule:[
+      { weeks:"1",     topic:"Units & Measurements · Motion in a Straight Line",                     cls:"XI",  task:"Dimensional analysis drills + kinematics graphs." },
+      { weeks:"2",     topic:"Motion in a Plane · Laws of Motion",                                   cls:"XI",  task:"Projectile motion + Newton's laws + friction problems." },
+      { weeks:"3",     topic:"Work, Energy & Power · System of Particles & Rotational Motion",      cls:"XI",  task:"Energy conservation + moment of inertia table (standard objects)." },
+      { weeks:"4",     topic:"Gravitation · Mechanical Properties of Solids",                        cls:"XI",  task:"Orbital velocity/energy + stress-strain graphs." },
+      { weeks:"5",     topic:"Mechanical Properties of Fluids · Thermal Properties of Matter",      cls:"XI",  task:"Bernoulli's theorem + calorimetry + Newton's cooling law." },
+      { weeks:"6",     topic:"Thermodynamics · Kinetic Theory",                                      cls:"XI",  task:"PV diagrams, First & Second Law, rms speed formula derivation." },
+      { weeks:"7",     topic:"Oscillations · Waves",                                                 cls:"XI",  task:"SHM energy formulas + standing waves in strings/pipes." },
+      { weeks:"7–8",   topic:"XI Practicals — Experiments & Activities",                             cls:"XI",  task:"Complete 4 experiments from Sec A + 4 from Sec B. Write records." },
+      { weeks:"8–9",   topic:"Electric Charges & Fields · Electrostatic Potential & Capacitance",   cls:"XII", task:"Gauss's law applications + capacitor combinations." },
+      { weeks:"9–10",  topic:"Current Electricity · Moving Charges & Magnetism",                    cls:"XII", task:"Kirchhoff's laws circuits + Biot-Savart law numericals." },
+      { weeks:"10–11", topic:"Magnetism & Matter · EM Induction · Alternating Current",             cls:"XII", task:"Faraday/Lenz + LCR series circuits + phasor diagrams." },
+      { weeks:"12",    topic:"Electromagnetic Waves · Ray Optics & Optical Instruments",            cls:"XII", task:"EM spectrum + mirror/lens formula + telescope/microscope." },
+      { weeks:"13",    topic:"Wave Optics · Dual Nature of Radiation & Matter",                     cls:"XII", task:"Young's double slit experiment + Einstein's photoelectric equation." },
+      { weeks:"14",    topic:"Atoms · Nuclei",                                                       cls:"XII", task:"Bohr model radius/energy + binding energy per nucleon graph." },
+      { weeks:"15",    topic:"Semiconductor Electronics",                                            cls:"XII", task:"p-n junction I-V characteristics + diode as rectifier." },
+      { weeks:"16–17", topic:"XII Practicals — Experiments & Activities",                            cls:"XII", task:"Sec A: 4 experiments (circuits, galvanometer). Sec B: 4 optics experiments." },
+      { weeks:"18–22", topic:"🔁 Full Revision + 10 Mock Papers",                                   cls:"Both",task:"Formula sheet revision + 10 timed papers + investigatory project." },
+    ]
+  },
+  chemistry: {
+    label:"Chemistry", icon:"🧪", color:"#059669", bg:"#ECFDF5", bd:"#A7F3D0",
+    teacher:"Dr. Gupta", deadline:"Sept 22, 2026", totalWeeks:22,
+    tip:"Make a MASTER reaction flowchart for all organic chapters — it's your most powerful revision tool. For inorganic, use mnemonics. Practicals (30 marks) need 3 months of regular lab work.",
+    practicals:"Volumetric Analysis + Salt Analysis + Content Based Experiment + Project — 30 marks",
+    schedule:[
+      { weeks:"1–2",  topic:"Some Basic Concepts of Chemistry · Structure of Atom",      cls:"XI",     task:"Mole concept problems + quantum numbers + electron configurations." },
+      { weeks:"3",    topic:"Classification of Elements · Chemical Bonding & Molecular Structure", cls:"XI", task:"Periodic trends table + VSEPR theory + hybridisation." },
+      { weeks:"4",    topic:"Chemical Thermodynamics",                                   cls:"XI",     task:"Hess's law + ΔG, ΔH, ΔS + criteria for spontaneity." },
+      { weeks:"5",    topic:"Equilibrium",                                               cls:"XI",     task:"Kc, Kp calculations + Le Chatelier + pH of acids/bases/buffers." },
+      { weeks:"6",    topic:"Redox Reactions · Organic Chemistry: Basic Principles",    cls:"XI",     task:"Balancing redox (ion-electron method) + IUPAC nomenclature." },
+      { weeks:"7–8",  topic:"Hydrocarbons (XI) + Solutions (XII)",                      cls:"XI+XII", task:"Markovnikov/anti, mechanisms + colligative properties numericals." },
+      { weeks:"9",    topic:"Electrochemistry · Chemical Kinetics",                     cls:"XII",    task:"Nernst equation + Kohlrausch law + integrated rate laws." },
+      { weeks:"10",   topic:"d & f Block Elements · Coordination Compounds",            cls:"XII",    task:"KMnO₄/K₂Cr₂O₇ reactions + IUPAC of coordination compounds." },
+      { weeks:"11",   topic:"Haloalkanes & Haloarenes · Alcohols, Phenols & Ethers",   cls:"XII",    task:"SN1 vs SN2 mechanisms + dehydration reaction chain." },
+      { weeks:"12",   topic:"Aldehydes, Ketones & Carboxylic Acids",                   cls:"XII",    task:"Nucleophilic addition + Aldol condensation + reactions chart." },
+      { weeks:"13",   topic:"Amines · Biomolecules",                                    cls:"XII",    task:"Basicity order of amines + Glucose reactions + DNA/RNA structure." },
+      { weeks:"14–15",topic:"Practicals: Salt Analysis + Volumetric Titrations",       cls:"Both",   task:"Cation/anion systematic analysis + KMnO₄ titration practice." },
+      { weeks:"16–22",topic:"🔁 Organic Reactions Chart + 10 Mock Papers",             cls:"Both",   task:"One-page organic reactions summary + 10 timed full papers." },
+    ]
+  },
+  english: {
+    label:"English", icon:"📚", color:"#D97706", bg:"#FFFBEB", bd:"#FDE68A",
+    teacher:"Mrs. Nair", deadline:"Sept 22, 2026", totalWeeks:22,
+    tip:"Format earns marks BEFORE content. In every writing task, nail the format in 1 minute, then fill content. For literature — annotate every text. One fresh example per answer makes you memorable.",
+    practicals:"Listening (5) + Speaking (5) + Project Work (10) — 20 marks internal",
+    schedule:[
+      { weeks:"1–2",   topic:"Hornbill: Portrait of a Lady · A Photograph · We're Not Afraid to Die", cls:"XI",  task:"Extract questions (3 marks each) + 2 speech writing practices." },
+      { weeks:"3–4",   topic:"Discovering Tut · The Laburnum Top · The Voice of the Rain",           cls:"XI",  task:"Note-Making: 5 passages + 2 debate writings." },
+      { weeks:"5–6",   topic:"Childhood · The Adventure · Silk Road · Father to Son",                cls:"XI",  task:"Long answers 120–150 words + 5 advertisement/poster drafts." },
+      { weeks:"7–8",   topic:"Snapshots: All 5 Stories (Beautiful White Horse → Melon City)",        cls:"XI",  task:"Inferential questions + 3 speeches + 2 debates." },
+      { weeks:"9–10",  topic:"Grammar Intensive: Tenses, Clauses, Transformation + Note-Making",    cls:"XI",  task:"50 grammar exercises + 10 timed note-making passages." },
+      { weeks:"11–12", topic:"Flamingo Prose: Last Lesson · Lost Spring · Deep Water · The Rattrap", cls:"XII", task:"Short (40–50 words) + long (120–150 words) answers + 5 formal letters." },
+      { weeks:"13–14", topic:"Flamingo Prose: Indigo · Poets & Pancakes · The Interview · Going Places", cls:"XII", task:"Theme-based essays + 5 article/report drafts." },
+      { weeks:"15–16", topic:"Flamingo Poetry: All 5 Poems",                                        cls:"XII", task:"Poetic device identification + appreciation paragraphs." },
+      { weeks:"17–18", topic:"Vistas: All 6 Chapters",                                              cls:"XII", task:"Passage-based questions + 5 notices + 5 invitations." },
+      { weeks:"19–20", topic:"Writing Skills Intensive (All XII Formats)",                          cls:"XII", task:"5 each: notices, invitations, formal letters/resumes, articles, reports." },
+      { weeks:"21–22", topic:"🔁 Unseen Passages + 10 Mock Papers",                                cls:"Both",task:"10 full timed papers. Review format errors." },
+    ]
+  },
+  biology: {
+    label:"Biology", icon:"🌿", color:"#DC2626", bg:"#FEF2F2", bd:"#FECACA",
+    teacher:"Ms. Iyer", deadline:"Feb 28, 2027", totalWeeks:45,
+    tip:"Diagrams win marks — label 10 key diagrams every week until they're muscle memory. Make a glossary of 5 new terms per chapter. Use flowcharts for all biological processes.",
+    practicals:"Major Exp + Minor Exp + Slide Prep + Spotting + Project — 30 marks",
+    schedule:[
+      { weeks:"1–6",   topic:"Diversity of Living Organisms (Ch 1–4: Living World, Classification, Plant & Animal Kingdoms)", cls:"XI",  task:"5-kingdom comparison table + phylogenetic diagrams." },
+      { weeks:"7–10",  topic:"Structural Organisation in Plants & Animals (Ch 5–7)",                cls:"XI",  task:"Tissue diagrams + frog morphology + family Solanaceae." },
+      { weeks:"11–15", topic:"Cell: Structure and Function (Ch 8–10)",                              cls:"XI",  task:"Cell organelle diagrams (label from memory) + mitosis/meiosis stages." },
+      { weeks:"16–19", topic:"Plant Physiology: Photosynthesis · Respiration · Growth (Ch 11–13)", cls:"XI",  task:"C3/C4 pathways + ATP count chart + plant growth regulators." },
+      { weeks:"20–28", topic:"Human Physiology: Ch 14–19 (Breathing, Circulation, Excretion, Locomotion, Neural, Chemical)", cls:"XI", task:"All system diagrams + physiology MCQs + disorder tables." },
+      { weeks:"29–32", topic:"Reproduction: Flowering Plants · Human Reproduction · Reproductive Health (Ch 1–3 XII)", cls:"XII", task:"Gametogenesis diagrams + ART techniques table." },
+      { weeks:"33–37", topic:"Genetics & Evolution: Principles of Inheritance · Molecular Basis · Evolution (Ch 4–6)", cls:"XII", task:"Punnett squares + pedigree charts + evolution evidence table." },
+      { weeks:"38–40", topic:"Biology & Human Welfare: Health & Diseases · Microbes (Ch 7–8)",     cls:"XII", task:"Disease-pathogen-symptom-control table + immunology notes." },
+      { weeks:"41–43", topic:"Biotechnology: Principles & Applications (Ch 9–10)",                 cls:"XII", task:"rDNA technology flow diagram + Bt crops + gene therapy." },
+      { weeks:"44–45", topic:"Ecology: Organisms & Populations · Ecosystem · Biodiversity (Ch 11–13)", cls:"XII", task:"Ecological pyramids + conservation hotspots map." },
+    ]
+  },
+  psychology: {
+    label:"Psychology", icon:"🧠", color:"#BE185D", bg:"#FDF2F8", bd:"#FBCFE8",
+    teacher:"Mr. Rao", deadline:"Feb 28, 2027", totalWeeks:45,
+    tip:"Psychology = theories + real examples. For every theory, link it to a real-life scenario you've experienced. Your practicals (30 marks) need an interesting project — start choosing your topic in Week 1.",
+    practicals:"Project File + Viva + 2 Experiments (conduction + report) — 30 marks",
+    schedule:[
+      { weeks:"1–6",   topic:"Understanding Psychology · Methods of Enquiry in Psychology",          cls:"XI",  task:"Methods comparison table + research ethics notes." },
+      { weeks:"7–12",  topic:"Human Development · Sensory & Perceptual Processes · Learning (Units III–V)", cls:"XI", task:"Piaget/Vygotsky stage charts + conditioning experiment examples." },
+      { weeks:"13–18", topic:"Human Memory · Thinking · Motivation & Emotion (Units VI–VIII)",      cls:"XI",  task:"Stage model diagrams + Maslow hierarchy + decision-making models." },
+      { weeks:"19–21", topic:"XI Practical: 1 Project + 2 Experiments",                             cls:"XI",  task:"Choose project (Bullying/Social Media/Peer Pressure) by Week 1 of this block." },
+      { weeks:"22–27", topic:"Variations in Psychological Attributes · Self & Personality (Units I–II XII)", cls:"XII", task:"Intelligence theories comparison + personality assessment tools." },
+      { weeks:"28–33", topic:"Meeting Life Challenges · Psychological Disorders (Units III–IV XII)", cls:"XII", task:"Stress management techniques + DSM disorder categories table." },
+      { weeks:"34–39", topic:"Therapeutic Approaches · Attitude & Social Cognition (Units V–VI XII)", cls:"XII", task:"Therapy comparison chart + attitude change models." },
+      { weeks:"40–43", topic:"Social Influence & Group Processes (Unit VII XII)",                   cls:"XII", task:"Social loafing + group polarisation + obedience studies." },
+      { weeks:"44–45", topic:"XII Practical: Case Profile + 5 Psychological Tests",                 cls:"XII", task:"Administer intelligence/personality tests. Prepare viva answers." },
+    ]
+  }
+};
+
+/* ─────────────────── STATE ─────────────────────────────── */
+let activeTab      = 'overview';
+let activeSubject  = 'mathematics';
+let openAccordion  = null;
+
+/* ─────────────────── HELPERS ───────────────────────────── */
+function hex(col, alpha) {
+  // return col + Math.round(alpha * 255).toString(16).padStart(2,'0');
+  return col;
+}
+
+/* ─────────────────── RENDERERS ─────────────────────────── */
+function renderOverview() {
+  const priority = ['mathematics','physics','chemistry','english'];
+  const other    = ['biology','psychology'];
+
+  const priorityCards = priority.map(k => {
+    const s = SUBJECTS[k];
+    return `
+      <div class="card" style="border-left:4px solid ${s.color}; margin-bottom:9px;">
+        <div class="subject-row">
+          <div class="left">
+            <span class="icon">${s.icon}</span>
+            <div>
+              <div class="name">${s.label}</div>
+              <div class="meta">👩‍🏫 ${s.teacher} · ⏰ ${s.deadline}</div>
+            </div>
+          </div>
+          <span class="pill" style="background:${s.color}18; color:${s.color};">${s.schedule.length} milestones</span>
+        </div>
+      </div>`;
+  }).join('');
+
+  const otherCards = other.map(k => {
+    const s = SUBJECTS[k];
+    return `
+      <div class="card" style="border-left:4px solid ${s.color}; margin-bottom:9px;">
+        <div class="subject-row">
+          <div class="left">
+            <span class="icon">${s.icon}</span>
+            <div>
+              <div class="name">${s.label}</div>
+              <div class="meta">👩‍🏫 ${s.teacher} · ⏰ ${s.deadline}</div>
+            </div>
+          </div>
+          <span class="pill" style="background:${s.color}18; color:${s.color};">${s.schedule.length} blocks</span>
+        </div>
+      </div>`;
+  }).join('');
+
+  const hoursRows = HOURS.map(h => `
+    <div class="progress-row">
+      <div class="progress-meta">
+        <span>${h.label}</span>
+        <strong>${h.h}h / week</strong>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" style="background:${h.color}; width:${(h.h/14)*100}%;"></div>
+      </div>
+    </div>`).join('');
+
+  return `
+    <div class="tab-panel">
+      <div class="card-dark">
+        <div class="kicker">Target A</div>
+        <h3>PCM + English</h3>
+        <p>Apr 22, 2026 → Sept 22, 2026</p>
+        <p>~22 weeks · ~130 weekdays (Mon–Sat)</p>
+      </div>
+
+      <div class="section-label">Priority Subjects — 5 Months</div>
+      ${priorityCards}
+
+      <div class="card-dark mt-20">
+        <div class="kicker">Target B</div>
+        <h3>Biology + Psychology</h3>
+        <p>Apr 22, 2026 → Feb 28, 2027</p>
+        <p>~45 weeks · More relaxed pace</p>
+      </div>
+
+      <div class="section-label">Secondary Subjects — 10 Months</div>
+      ${otherCards}
+
+      <div class="section-label mt-16">Weekly Hours Target</div>
+      <div class="card" style="padding-bottom:10px;">
+        ${hoursRows}
+      </div>
+
+      <div class="info-box" style="background:#F0FDF4; border:1px solid #86EFAC;">
+        <h4 style="color:#14532D;">📌 The Saturday Rule</h4>
+        <p style="color:#166534;">Every Saturday = <strong>Mock Test (3 hrs)</strong> + Error Analysis (2 hrs) + Plan next week (1 hr).
+          No new chapters on Saturday. If behind, catch up in this slot.</p>
+      </div>
+
+      <div class="info-box" style="background:#FEF2F2; border:1px solid #FECACA; margin-top:12px;">
+        <h4 style="color:#7F1D1D;">🚫 Sunday = Sacred Rest</h4>
+        <p style="color:#991B1B;">No studying. No "quick revision." Your brain consolidates the week's learning during rest.
+          This is not optional — it's part of the plan.</p>
+      </div>
+    </div>`;
+}
+
+function renderDaily() {
+  const routineItems = DAILY.map(item => `
+    <div class="routine-item${item.isBreak ? ' is-break' : ''}" style="border-left-color:${item.isBreak ? '#CBD5E1' : item.color};">
+      <span class="ri-icon">${item.icon}</span>
+      <div>
+        <div class="ri-time" style="color:${item.isBreak ? '#94A3B8' : item.color};">${item.time}</div>
+        <div class="ri-task">${item.task}</div>
+      </div>
+    </div>`).join('');
+
+  const weeklyRows = WEEKLY.map(d => `
+    <div class="week-row">
+      <span class="day-badge" style="background:${d.color};">${d.day}</span>
+      <span>${d.theme}</span>
+    </div>`).join('');
+
+  return `
+    <div class="tab-panel">
+      <div class="card-dark" style="margin-bottom:16px;">
+        <div style="font-size:14px; font-weight:700; color:#FCD34D;">⏰ ~8 Hours/Day — Mon to Fri</div>
+        <p style="margin-top:5px;">Saturday = Tests + Review · Sunday = Full Rest</p>
+      </div>
+
+      <div class="daily-layout">
+        <div>
+          <div class="section-label">Daily Routine</div>
+          ${routineItems}
+        </div>
+        <div>
+          <div class="section-label mt-16" style="margin-top:20px;">Weekly Day Themes</div>
+          ${weeklyRows}
+
+          <div class="info-box mt-16" style="background:#EFF6FF; border:1px solid #BFDBFE;">
+            <h4 style="color:#1D4ED8;">📚 Practice Formula</h4>
+            <ol>
+              <li>Read NCERT → Study Examples → Solve All Exercises → Exemplar</li>
+              <li>Every exercise solved must be written, not just read</li>
+              <li>For each chapter: mini-test yourself 1 week later (5 questions)</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function renderChapters() {
+  const s = SUBJECTS[activeSubject];
+
+  const pills = Object.keys(SUBJECTS).map(k => {
+    const sub = SUBJECTS[k];
+    const active = k === activeSubject;
+    return `<button class="subj-pill" data-subj="${k}"
+      style="border-color:${sub.color}; background:${active ? sub.color : 'transparent'}; color:${active ? '#fff' : sub.color};">
+      ${sub.icon} ${sub.label}
+    </button>`;
+  }).join('');
+
+  const schedule = s.schedule.map(item => `
+    <div class="chapter-card" style="border-color:${s.bd};">
+      <div class="cc-header">
+        <div style="display:flex; gap:7px; align-items:center; flex-wrap:wrap;">
+          <span class="cc-wk" style="background:${s.color};">Wk ${item.weeks}</span>
+          <span class="cc-cls">Class ${item.cls}</span>
+        </div>
+      </div>
+      <div class="cc-topic">${item.topic}</div>
+      <div class="cc-task">✏️ ${item.task}</div>
+    </div>`).join('');
+
+  return `
+    <div class="tab-panel">
+      <div class="pill-row">${pills}</div>
+
+      <div class="subj-header" style="background:${s.bg}; border-color:${s.bd};">
+        <h2 style="color:${s.color};">${s.icon} ${s.label}</h2>
+        <div class="sh-meta">👩‍🏫 ${s.teacher} &nbsp;·&nbsp; 📅 ${s.deadline}</div>
+        <div class="sh-tip">"${s.tip}"</div>
+      </div>
+
+      <div class="practicals-banner">🔬 PRACTICALS: ${s.practicals}</div>
+
+      <div class="section-label">Week-by-Week Chapter Plan</div>
+      <div class="chapter-grid">${schedule}</div>
+    </div>`;
+}
+
+function renderTips() {
+  const accordions = Object.keys(SUBJECTS).map(k => {
+    const s = SUBJECTS[k];
+    const isOpen = openAccordion === k;
+    return `
+      <div class="accordion" style="border-color:${s.bd};">
+        <button class="accordion-btn${isOpen ? ' open' : ''}" data-acc="${k}">
+          <div class="acc-left">
+            <span class="acc-icon">${s.icon}</span>
+            <div>
+              <div class="acc-name" style="color:${s.color};">${s.label}</div>
+              <div class="acc-teacher">${s.teacher}</div>
+            </div>
+          </div>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="accordion-body${isOpen ? ' open' : ''}">
+          <div class="tip-text" style="background:${s.bg};">${s.tip}</div>
+        </div>
+      </div>`;
+  }).join('');
+
+  const generalTips = GENERAL_TIPS.map(t => `
+    <div class="general-tip">
+      <span class="gt-icon">${t.icon}</span>
+      <div>
+        <div class="gt-title">${t.title}</div>
+        <div class="gt-text">${t.tip}</div>
+      </div>
+    </div>`).join('');
+
+  const assessRows = [
+    ["Mathematics","Periodic Tests (Best 2/3) = 10M · Activities = 10M"],
+    ["Physics",    "Periodic Tests = 10M · Practicals = 30M"],
+    ["Chemistry",  "Periodic Tests = 10M · Practicals = 30M"],
+    ["English",    "Listening + Speaking = 10M · Project = 10M"],
+    ["Biology",    "Periodic Tests = 10M · Practicals = 30M"],
+    ["Psychology", "Experiments + Project + Viva = 30M"],
+  ].map(([subj, marks]) => `
+    <div class="assess-row">
+      <div class="ar-subj">${subj}</div>
+      <div class="ar-marks">${marks}</div>
+    </div>`).join('');
+
+  return `
+    <div class="tab-panel">
+      <div class="section-label">Teacher Tips by Subject</div>
+      ${accordions}
+
+      <div class="section-label mt-20">General Study Principles</div>
+      ${generalTips}
+
+      <div class="assessment-box">
+        <h4>⚠️ Internal Assessment Summary</h4>
+        ${assessRows}
+      </div>
+    </div>`;
+}
+
+/* ─────────────────── RENDER ENGINE ─────────────────────── */
+function render() {
+  const main = document.getElementById('main-content');
+  switch (activeTab) {
+    case 'overview': main.innerHTML = renderOverview(); break;
+    case 'daily':    main.innerHTML = renderDaily();    break;
+    case 'chapters': main.innerHTML = renderChapters(); break;
+    case 'tips':     main.innerHTML = renderTips();     break;
+  }
+  attachListeners();
+}
+
+function attachListeners() {
+  /* Subject pills */
+  document.querySelectorAll('.subj-pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      activeSubject = btn.dataset.subj;
+      render();
+    });
+  });
+
+  /* Accordion */
+  document.querySelectorAll('.accordion-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.dataset.acc;
+      openAccordion = openAccordion === key ? null : key;
+      render();
+    });
+  });
+}
+
+/* ─────────────────── TAB NAV ───────────────────────────── */
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    activeTab = btn.dataset.tab;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    openAccordion = null;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    render();
+  });
+});
+
+/* ─────────────────── INIT ──────────────────────────────── */
+render();
+</script>
+</body>
+</html>
